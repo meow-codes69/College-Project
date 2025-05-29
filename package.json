@@ -9,9 +9,12 @@
   ],
   "license": "ISC",
   "author": "Uday Pratap Chauhan",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "meow"
+    "dev": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
   }
 }
