@@ -1,0 +1,17 @@
+{
+  "name": "college-project",
+  "version": "1.0.0",
+  "description": "This is a complex project I am creating for my final sem practicals",
+  "keywords": [
+    "meow",
+    "learning-project",
+    "meow-codes"
+  ],
+  "license": "ISC",
+  "author": "Uday Pratap Chauhan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "meow"
+  }
+}
