@@ -10,11 +10,16 @@
   "license": "ISC",
   "author": "Uday Pratap Chauhan",
   "type": "module",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "dev": "nodemon src/index.js"
   },
   "devDependencies": {
     "prettier": "^3.5.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1"
   }
 }
