@@ -1,3 +1,4 @@
+// Writting this code to standardize api errors, i.e. , all the api errors should be in one format.meow
 class ApiError extends Error {
     constructor(
         statuscode,
@@ -13,10 +14,10 @@ class ApiError extends Error {
         this.success = false;
 
         if(stack)
-            this,stack=stack
+            this.stack=stack
         else{
             Error.captureStackTrace(this,this.constructor)
-        }
+        }stack
     }
 }
 export {ApiError}
