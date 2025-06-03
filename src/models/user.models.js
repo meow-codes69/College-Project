@@ -48,7 +48,7 @@ const userSchema = new Schema(
 )
 
 // A pre hook is a function that runs before something happens(event), like saving , updating , validating , removing etc
-userSchema.pre("save", function (next) {
+userSchema.pre("save",async function (next) {
     if (!this.isModified("password")) return next()
     this.password = bcrypt.hash(this.password, 12)
     next()
@@ -83,4 +83,4 @@ userSchema.methods.generateRefreshToken = async function () {
     )
 }
 
-export const user = mongoose.model("User", userSchema)
+export const User = mongoose.model("User", userSchema)
