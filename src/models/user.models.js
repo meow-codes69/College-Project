@@ -1,4 +1,6 @@
 import mongoose, { Schema } from "mongoose";
+import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 
 const userSchema = new Schema(
     {
@@ -34,10 +36,10 @@ const userSchema = new Schema(
         coverImage: {
             type: String
         },
-        watchHistory: {
+        watchHistory: [{
             type: Schema.Types.ObjectId,
             ref: "Video"
-        },
+        }],
         refreshToken: {
             type: String
         }
@@ -50,14 +52,14 @@ const userSchema = new Schema(
 // A pre hook is a function that runs before something happens(event), like saving , updating , validating , removing etc
 userSchema.pre("save",async function (next) {
     if (!this.isModified("password")) return next()
-    this.password = bcrypt.hash(this.password, 12)
+    this.password =await bcrypt.hash(this.password, 12)
     next()
 })
 userSchema.methods.isPasswordCorrect = async function (password) {
     return await bcrypt.compare(password, this.password)
 }
 
-userSchema.methods.generateAccessToken = async function () {
+userSchema.methods.generateAccessToken = function () {
     return jwt.sign(
         {
             _id: this._id,
@@ -71,7 +73,7 @@ userSchema.methods.generateAccessToken = async function () {
         }
     )
 }
-userSchema.methods.generateRefreshToken = async function () {
+userSchema.methods.generateRefreshToken =function () {
     return jwt.sign(
         {
             _id: this._id
